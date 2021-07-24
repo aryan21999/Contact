@@ -2,9 +2,17 @@
 
 const mongoose = require('mongoose')
 
-mongoose.connect('mongodb+srv://Aryan:09876Arya@cluster0.h0l2c.mongodb.net/Contact?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://Aryan:09876Arya@cluster0.h0l2c.mongodb.net/Number?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,
     useUnifiedTopology: true
 })
+
+mongoose.connection.on("error", (err) => {
+    console.log("Mongoose Connection ERROR: " + err.message);
+  });
+  
+  mongoose.connection.once("open", () => {
+    console.log("MongoDB Connected!");
+  });

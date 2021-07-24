@@ -1,3 +1,4 @@
+const http = require('http');
 const express = require('express')
 const Contact = require('../models/Contact')
 const router = express.Router()
@@ -6,7 +7,7 @@ router.post('/contact', async (req, res,) => {
     const contact = new Contact ({
         name: req.body.name,
         phone: parseInt(req.body.phone),
-        email: req.body.email,
+        email: req.body.email
         // owner: req.user.email
     })
     try {
@@ -14,7 +15,7 @@ router.post('/contact', async (req, res,) => {
         res.status(201).send(contact)
     } catch (e) {
         console.log('Given Data is not correct')
-        res.status.send(e)
+        res.status(400).send(e)
     }
 })
 
@@ -40,3 +41,5 @@ router.get('/contact/:id', async (req, res,) => {
     res.status(500).send(e)
     }
 })
+
+module.exports = router
