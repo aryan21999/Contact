@@ -42,7 +42,7 @@ body, html {
   /* The image used */
   background-image: url("https://storage.pixteller.com/designs/designs-images/2019-03-27/05/simple-background-backgrounds-passion-simple-1-5c9b95d09002a.png");
 
-  min-height: 600px;
+  min-height: 650px;
 
   /* Center and scale the image nicely */
   background-position: center;
@@ -93,10 +93,23 @@ input[type=text]:focus, input[type=password]:focus {
 
 .topnav-right {
   float: right;
+  padding: 0px 5px;
 }
+.header {
+      margin: auto;
+      width: 18%;
+      padding: 10px;
+    }
+    .center {
+        text-align: center;
+}
+    .h2  {
+        text-align: center;
+    }
 
 </style>
 </head>
+<div class="bg-img">
 <ul>
     <li><a class="navbar-brand" href="/">Contact-App</a></li>
     <div class="topnav-right">
@@ -104,23 +117,32 @@ input[type=text]:focus, input[type=password]:focus {
     </div>
   </ul>
 <body>
-
-<div class="bg-img">
-  <form action="/action_page.php" class="container">
-    <h1>Contacts</h1>
-    
-    <label for="name"><i class="fas fa-user"></i><b>name</b></label>
-    <input type="text" placeholder="Enter Name" name="name" required>
-
-    <label for="email"><i class="fas fa-number"></i><b>phone</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>
-
-    <label for="psw"><i class="fas fa-lock"></i><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+  <div class="center">
+    <h2 style="margin:5px">Save-Contacts</h2>
+</div>
+<div id="myDIV" class="header">
+    <input class="col-xs-3" type="text" id="name" placeholder="Name..." style="background-color:#DCDCDC; height:40px">
+    <span class="addBtn"></span>
+  </div>
+  <div id="myDIV" class="header">
+    <input class="col-xs-4" type="number" id="phone" placeholder="Phone No..." style="background-color:#DCDCDC; height:40px; margin-bottom: 6%">
+    <span class="addBtn"></span>
+  </div>
+  <div id="myDIV" class="header">
+    <input class="col-xs-5" type="email" id="email" placeholder="E-mail..." style="background-color:#DCDCDC; height:40px; margin-top: 3%">
+    <span class="addBtn"></span>
+  </div>
+  <div class="center">
     <INPUT type="radio" name="phone" value="personal"> Personal <BR>
-    <INPUT type="radio" name="phone" value="professional"> Professional <BR>
-    <button type="submit" class="btn">Add Contact</button>
+    <INPUT type="radio" name="phone" value="business"> Business <BR>
+  </div>
+  <div class="center">
+    <button onclick="addContact()" action="addContact" type="submit" form="nameform" value="Submit" style="background-color:#DCDCDC; height:40px; margin-top: 2%">Add Contact</button>
+</div>
   </form>
+
+  <table id=displayContacts class="table"></table>
+
 </div>
 </body>
 </html>
