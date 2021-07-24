@@ -79,7 +79,7 @@ router.delete('/contact/:id/delete', async (req, res,) => {
     res.send(contact)
     }
     catch (e) {
-        res.status(500),send()
+        res.status(500).send()
     }
 })
 
