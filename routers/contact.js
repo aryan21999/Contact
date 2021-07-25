@@ -1,6 +1,7 @@
 const http = require('http');
 const express = require('express')
 const Contact = require('../models/Contact')
+const auth = require('../middleware/auth')
 const router = express.Router()
 
 router.post('/contact', async (req, res,) => {
