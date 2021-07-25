@@ -19,4 +19,37 @@ router.post('/users', async (req, res,) => {
   }
 })
 
+router.get('/users/me', async (req, res,) => {
+  res.send(req.user)
+})
+
+router.post('users/login', async (req, res,) => {
+  try {
+    const user = await User.findByCredentials(req.body.email, req.body.password)
+    res.send({ user })
+  }
+  catch (e) {
+    res.status(400).send(e)
+  }
+})
+
+router.patch('/users/me', async (req, res) => {
+  const update = Object.keys(req.body)
+  const allowedUpdates = ['name', 'email', 'password']
+  const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
+
+  if(!isValidOperation) {
+    return res.status(400).send({ error: 'Invalid Updates'})
+  }
+  try {
+    updates.forEach((update) => req.user[update] = req.body[update])
+      await req.user.save()
+      res.send(req.user)
+    }
+    catch (e) {
+      res.status(400).send(e)
+    }
+})
+
+
 module.exports = router
