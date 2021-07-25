@@ -19,19 +19,22 @@ router.post('/users', async (req, res,) => {
   }
 })
 
+
+router.post('/users/login', async (req, res,) => {
+  try {
+    const user = await User.find({ email: req.body.email, password: req.body.password })
+    res.send(user)
+  } 
+  catch (error) {
+    res.status(400).send({ error: 'User is not valid' })
+  }
+})
+
+
 router.get('/users/me', async (req, res,) => {
   res.send(req.user)
 })
 
-router.post('users/login', async (req, res,) => {
-  try {
-    const user = await User.findByCredentials(req.body.email, req.body.password)
-    res.send({ user })
-  }
-  catch (e) {
-    res.status(400).send(e)
-  }
-})
 
 router.patch('/users/me', async (req, res) => {
   const update = Object.keys(req.body)
