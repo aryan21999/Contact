@@ -4,15 +4,12 @@ const User = require('../models/User')
 const auth = require('../middleware/auth')
 const router = new express.Router()
 
-router.get('/', function (req, res, next) {
-	res.render('register.html');
-});
 
 router.post('/users', async (req, res,) => {
     const user = new User ({
         name: req.body.name,
-        password: req.body.password,
-        email: req.body.email
+        email: req.body.email,
+        password: req.body.password
     })
     try {
       await user.save()

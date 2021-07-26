@@ -7,11 +7,6 @@ const userSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
-    password: { 
-        type: String, 
-        minlength: 6,
-        required: true 
-    },
     email: {
         type: String,
         required: true,
@@ -22,7 +17,24 @@ const userSchema = new mongoose.Schema({
                 throw new Error('Email is invalid')
             }
         }
-    }
+    },
+    password: {
+        type: String,
+        required: true,
+        minlength: 6,
+        trim: true,
+        validate(value) {
+            if (value.toLowerCase().includes('password')) {
+                throw new Error('Password cannot contain "password"')
+            }
+        }
+    },
+    tokens: [{
+        token: {
+            type: String,
+            required: true
+        }
+    }]
 })
 
 const User = mongoose.model('User', userSchema)

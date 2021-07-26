@@ -5,15 +5,29 @@ const userRouter = require('./routers/user')
 const path = require('path')
 const http = require('http')
 const jwt = require('jsonwebtoken')
-const engines = require('consolidate');
 
 
 const app = express();
 
 const port = process.env.port || 3000
-app.set('views', __dirname + '/views');
-app.engine('html', engines.mustache);
-app.set('view engine', 'html');
+// const publicDirectoryPath = path.join(__dirname, + './public')
+
+// app.use(express.static(__dirname + './../public'));
+const HTML_DIR = path.join(__dirname, '/public/')
+app.use(express.static(HTML_DIR))
+
+app.get('/', (req,res) => {
+    res.sendFile(path.join(__dirname+ '/views/signup.html'))
+})
+
+// const publicDirectoryPath = path.join(__dirname)
+
+// app.get('/', function (req, res, next) {
+//   res.sendFile(publicDirectoryPath + './views/signup.html')
+//   // console.log('Successfully User Created!')
+// })
+
+// app.use(express.static(publicDirectoryPath))
 
 
 app.use(express.json())
