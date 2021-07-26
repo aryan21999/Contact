@@ -4,12 +4,12 @@ const Contact = require('../models/Contact')
 const auth = require('../middleware/auth')
 const router = express.Router()
 
-router.post('/contact', async (req, res,) => {
+router.post('/contact', auth, async (req, res,) => {
     const contact = new Contact ({
         name: req.body.name,
         phone: parseInt(req.body.phone),
-        email: req.body.email
-        // owner: req.user.email
+        email: req.body.email,
+        owner: req.user.email
     })
     try {
         await contact.save()
@@ -20,7 +20,7 @@ router.post('/contact', async (req, res,) => {
     }
 })
 
-router.get('/contact', async (req, res,) => {
+router.get('/contact', auth, async (req, res,) => {
     try {
         const contact = await Contact.find({ owner: req.user.email })
         res.send(contact)
@@ -30,7 +30,7 @@ router.get('/contact', async (req, res,) => {
     }
 })
 
-router.get('/contact/:id', async (req, res,) => {
+router.get('/contact/:id', auth, async (req, res,) => {
     try {
         const contact = await Contact.findOne({ _id, owner: req.user.email })
 
@@ -44,7 +44,7 @@ router.get('/contact/:id', async (req, res,) => {
     }
 })
 
-router.patch('/contact/:id', async (req, res,) => {
+router.patch('/contact/:id', auth, async (req, res,) => {
     const updates = Object.keys(req.body)
     const allowedUpdates = ['name', 'phone', 'email']
     const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
@@ -54,11 +54,11 @@ router.patch('/contact/:id', async (req, res,) => {
     }
     try {
         const contact = await Contact.findById(req.params.id)
-        if(contact.owner == req.user.email) {
+        if(_id == req.params.id) {
             updates.forEach((update) => contact[update] = req.body[update])
             await contact.save()
         }
-        else if(contact.owner != req.user.email) {
+        else if( _id != req.params.id ) {
             return res.status(400).send(e)
         }
         if(!contact) {
@@ -71,7 +71,7 @@ router.patch('/contact/:id', async (req, res,) => {
         }
 })
 
-router.delete('/contact/:id/delete', async (req, res,) => {
+router.delete('/contact/:id/delete', auth, async (req, res,) => {
     try {
         const contact = await Contact.findOneAndDelete({ _id: req.params.id, owner: req.user.email })
     if(!contact) {

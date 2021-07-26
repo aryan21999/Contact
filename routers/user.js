@@ -4,6 +4,10 @@ const User = require('../models/User')
 const auth = require('../middleware/auth')
 const router = new express.Router()
 
+router.get('/', function (req, res, next) {
+	res.render('register.html');
+});
+
 router.post('/users', async (req, res,) => {
     const user = new User ({
         name: req.body.name,
@@ -31,13 +35,25 @@ router.post('/users/login', async (req, res,) => {
   }
 })
 
+router.post('/users/logout', auth, async (req, res) => {
+  try {
+      req.user.tokens = req.user.tokens.filter((token) => {
+          return token.token !== req.token
+      })
+      await req.user.save()
+      res.send()
+  } catch (e) {
+      res.status(500).send()
+  }
+})
 
-router.get('/users/me', async (req, res,) => {
+
+router.get('/users/me', auth, async (req, res,) => {
   res.send(req.user)
 })
 
 
-router.patch('/users/me', async (req, res) => {
+router.patch('/users/me', auth, async (req, res) => {
   const update = Object.keys(req.body)
   const allowedUpdates = ['name', 'email', 'password']
   const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
