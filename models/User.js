@@ -21,7 +21,7 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
-        minlength: 6,
+        minlength: 7,
         trim: true,
         validate(value) {
             if (value.toLowerCase().includes('password')) {
@@ -32,7 +32,7 @@ const userSchema = new mongoose.Schema({
     tokens: [{
         token: {
             type: String,
-            required: true
+            required: false
         }
     }]
 })
@@ -56,7 +56,7 @@ userSchema.methods.toJSON = function () {
 
 userSchema.methods.generateAuthToken = async function () {
     const user = this
-    const token = jwt.sign({ _id: user._id.toString() }, 'thisismynewproject')
+    const token = jwt.sign({ _id: user._id.toString() }, 'somesupersecretsecret')
 
     user.tokens = user.tokens.concat({ token })
     await user.save()
@@ -78,16 +78,16 @@ userSchema.statics.findByCredentials = async (email, password) => {
     return user
 }
 
-// Hash the plain text password before saving
-userSchema.pre('save', async function (next) {
-    const user = this
+//Hash the plain text password before saving
+// userSchema.pre('save', async function (next) {
+//     const user = this
 
-    if (user.isModified('password')) {
-        user.password = await bcrypt.hash(user.password, 8)
-    }
+//     if (user.isModified('password')) {
+//         user.password = await bcrypt.hash(user.password, 6)
+//     }
 
-    next()
-})
+//     next()
+// })
 
 
 const User = mongoose.model('User', userSchema)

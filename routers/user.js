@@ -6,12 +6,15 @@ const router = new express.Router()
 
 
 router.post('/users', async (req, res,) => {
-  const user = new User(req.body)
+    const user = new User (req.body)
     try {
       await user.save()
       res.status(201).send(user)
     }
     catch (e) {
+      console.log(req.body.name)
+      console.log(req.body.email)
+      console.log(req.body.password)
       console.log('Enter Data is not Correct')
       res.status(400).send(e)
   }

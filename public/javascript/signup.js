@@ -3,9 +3,9 @@ function signUp() {
     const email = document.getElementById("email").value
     const password = document.getElementById("password").value
     axios.post("/users", {
-        name: name,
-        email: email,
-        password: password
+        name : name,
+        email : email,
+        password : password
     })
         .then(function (response) {
             console.log(response)
@@ -13,6 +13,7 @@ function signUp() {
             console.log({ message: 'User Created Successfully!' })
             location.replace('/views/signin.html')
         })
+        console.log()
         .catch(function (error) {
             console.log({ error: 'Invalid Credential' });
         })
