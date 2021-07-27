@@ -6,9 +6,9 @@ function logIn() {
         password: password,
     })
     .then(function (response) {
-        // localStorage.setItem('token', response.data.token)
-        // console.log(response.data.token)
-        location.replace('/views/signup.html')
+        localStorage.setItem('token', response.data.token)
+        console.log(response.data.token)
+        location.replace('/views/index.html')
     })
     .catch(function (error) {
         console.log({ error: 'Invalid email or password'});
