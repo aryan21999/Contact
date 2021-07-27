@@ -9,7 +9,7 @@
 
 <nav class="navbar navbar-dark bg-dark">
   <a class="navbar-brand" href="/">Contact-App</a>
-  <a class="btn btn-primary" href="./signin"> Sign in </a>
+  <a href="/views/signin.html"> Sign In </a>
 </nav>
 
 <body>
@@ -40,15 +40,13 @@
             <input class="form-control" type="password" id="password" placeholder="Password" required maxlength="30">
             <span class="addBtn"></span>
           </div><br>
-          <button class="btn btn-primary" onclick="signUp()" action="signUp" type="submit" value="Submit"
-            style="width:100%;">SignUp</button>
+         <button class="btn btn-primary" onclick="signUp()" action="signUp" type="submit" form="nameform" value="Submit" style="background-color:#007bff; height:40px; margin-top: 5%">SignUp</button>
         </form>
       </div>
     </div><br>
   </div>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-  <script src="/javascript/signup.js"></script>
+  <script src="/public/javascript/signup.js"></script>
 </body>
-
 </html>

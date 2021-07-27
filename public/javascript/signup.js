@@ -9,10 +9,11 @@ function signUp() {
        password: password
    })
    .then(function (response) {
+       console.log(response)
        console.log(response.data)
        console.log({ message: 'User Created Successfully!'})
-       location.replace('/signin.html')
-   })
+       location.replace('/views/signin.html')
+    })
    .catch(function (error) {
        console.log({ error: 'Invalid Credential'});
    })

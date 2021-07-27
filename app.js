@@ -12,22 +12,22 @@ const app = express();
 const port = process.env.port || 3000
 // const publicDirectoryPath = path.join(__dirname, + './public')
 
-// app.use(express.static(__dirname + './../public'));
-const HTML_DIR = path.join(__dirname, '/public/')
-app.use(express.static(HTML_DIR))
+app.use(express.static(__dirname + '././public'));
+// const HTML_DIR = path.join(__dirname, '/public/')
+// app.use(express.static(HTML_DIR))
 
-app.get('/', (req,res) => {
-    res.sendFile(path.join(__dirname+ '/views/signup.html'))
-})
+// app.get('/', (req,res) => {
+//     res.sendFile(path.join(__dirname+ '/views/index.html'))
+// })
 
 // const publicDirectoryPath = path.join(__dirname)
 
-// app.get('/', function (req, res, next) {
-//   res.sendFile(publicDirectoryPath + './views/signup.html')
-//   // console.log('Successfully User Created!')
-// })
+app.get('/', function (req, res, next) {
+      res.sendFile(path.join(__dirname+ '/views/signin.html'))
+  // console.log('Successfully User Created!')
+})
 
-// app.use(express.static(publicDirectoryPath))
+app.use(express.static(__dirname))
 
 
 app.use(express.json())
