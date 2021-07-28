@@ -11,7 +11,7 @@
   <ul>
     <li><a class="navbar-brand" href="/">Contact-App</a></li>
     <div class="topnav-right">
-      <li><a class="btn btn-success" href="/views/signin.html"> Log Out </a>
+      <li><a class="btn btn-success" style="padding: 10px;" href="/views/signin.html"> Log Out </a>
     </div>
   </ul>
 
@@ -38,8 +38,7 @@
       <INPUT type="radio" name="phone" value="business"> Business <BR>
     </div>
     <div class="center">
-      <button onclick="addContact()" action="addContact" type="submit" form="nameform" value="Submit"
-        style="background-color:#DCDCDC; height:40px; margin-top: 2%">Add Contact</button>
+      <button onclick="addContact()" action="addContact" type="submit" form="nameform" value="Submit" style="background-color:#DCDCDC; height:40px; margin-top: 5%">Add Contact</button>
     </div>
     </form>
     <table id=displayContacts class="table"></table>
@@ -47,7 +46,7 @@
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-<script src="/javascript/index.js"></script>
+<script src="/public/javascript/index.js"></script>
 </body>
 
 </html>
