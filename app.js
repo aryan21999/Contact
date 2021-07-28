@@ -36,7 +36,7 @@ app.use(userRouter)
 
 
 const User = require('./models/User')
-const token = jwt.sign({ _id:  '61000601fa70adab5fd85e81' }, 'somesupersecretsecret');
+const token = jwt.sign({ _id: '61013f21d5a4862aa7aa3d81' }, 'somesupersecretsecret');
 
 jwt.verify(token, 'somesupersecretsecret', function(err, token) {
     console.log(token)

@@ -4,12 +4,13 @@ const Contact = require('../models/Contact')
 const auth = require('../middleware/auth')
 const router = express.Router()
 
-router.post('/contact', auth, async (req, res,) => {
+router.post('/contact', async (req, res) => {
+    console.log("Himanshu")
     const contact = new Contact ({
         name: req.body.name,
-        phone: parseInt(req.body.phone),
-        email: req.body.email,
-        owner: req.user.email
+        phone: req.body.phone,
+        email: req.body.email
+        // owner: req.user._id
     })
     try {
         await contact.save()

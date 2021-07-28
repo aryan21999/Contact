@@ -21,12 +21,12 @@ const contactSchema = new mongoose.Schema({
                 throw new Error('Email is invalid')
             }
         }
-    },
-    owner: {
-        type: mongoose.Schema.Types.String,
-        required: true,
-        ref: 'User'
     }
+    // owner: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     required: true,
+    //     ref: 'User'
+    // }
 })
 
 const Contact = mongoose.model('Contact', contactSchema)
