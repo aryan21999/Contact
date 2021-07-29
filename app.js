@@ -27,6 +27,7 @@ app.get('/', function (req, res, next) {
   // console.log('Successfully User Created!')
 })
 
+
 app.use(express.static(__dirname))
 
 
@@ -35,10 +36,10 @@ app.use(contactRouter)
 app.use(userRouter)
 
 
-const User = require('./models/User')
-const token = jwt.sign({ _id: '61013f21d5a4862aa7aa3d81' }, 'somesupersecretsecret');
+const User = require('./models/user')
+const token = jwt.sign({ _id: '6102493723a0a015d5377d11' }, 'thisismynewproject');
 
-jwt.verify(token, 'somesupersecretsecret', function(err, token) {
+jwt.verify(token, 'thisismynewproject', function(err, token) {
     console.log(token)
 })
 
