@@ -1,52 +1,58 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 
 <head>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/public/css/index.css">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <title>Contact List</title>
 </head>
-<div class="bg-img">
-  <ul>
-    <li><a class="navbar-brand" href="/">Contact-App</a></li>
-    <div class="topnav-right">
-      <li><a class="btn btn-success" style="padding: 10px;" href="/views/signin.html"> Log Out </a>
-    </div>
-  </ul>
-
-  <body>
+<style>
+    .header {
+      margin: auto;
+      width: 20%;
+      border: 1px solid #5c594c;
+      padding: 9px;
+    }
+    .center {
+        text-align: center;
+}
+    .h2  {
+        text-align: center;
+        text-decoration: underline;
+    }
+    </style>
+<body>
     <div class="center">
-      <h2 style="margin:5px">Save-Contacts</h2>
+        <h2 style="margin:50px">Contact List</h2>
     </div>
     <div id="myDIV" class="header">
-      <input class="col-xs-3" type="text" id="name" placeholder="Name..." style="background-color:#DCDCDC; height:40px">
-      <span class="addBtn"></span>
+        <input class="col-xs-3" type="text" id="name" placeholder="Name..." style="background-color:#DCDCDC; height:40px; width: 235px">
+        <span class="addBtn"></span>
+      </div>
+      <div id="myDIV" class="header">
+        <input class="col-xs-4" type="number" id="phone" placeholder="Phone No..." style="background-color:#DCDCDC; height:40px; width: 235px; margin-top: 5%">
+        <span class="addBtn"></span>
+      </div>
+      <div id="myDIV" class="header">
+        <input class="col-xs-5" type="email" id="email" placeholder="E-mail..." style="background-color:#DCDCDC; height:40px; width: 235px; margin-top: 5%">
+        <span class="addBtn"></span>
+      </div>
+      <div class="center">
+        <button onclick="addContact()" action="addContact" type="submit" form="nameform" value="Submit" style="background-color:#DCDCDC; height:40px; margin-top: 5%">Add Contact</button>
     </div>
-    <div id="myDIV" class="header">
-      <input class="col-xs-4" type="number" id="phone" placeholder="Phone No..."
-        style="background-color:#DCDCDC; height:40px; margin-bottom: 6%">
-      <span class="addBtn"></span>
-    </div>
-    <div id="myDIV" class="header">
-      <input class="col-xs-5" type="email" id="email" placeholder="E-mail..."
-        style="background-color:#DCDCDC; height:40px; margin-top: 3%">
-      <span class="addBtn"></span>
-    </div>
-    <div class="center">
-      <INPUT type="radio" name="phone" value="personal"> Personal <BR>
-      <INPUT type="radio" name="phone" value="business"> Business <BR>
-    </div>
-    <div class="center">
-      <button onclick="addContact()" action="addContact" type="submit" form="nameform" value="Submit" style="background-color:#DCDCDC; height:40px; margin-top: 5%">Add Contact</button>
-    </div>
-    </form>
-    <table id=displayContacts class="table"></table>
-</div>
 
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <table id=list></table>
 
-<script src="/public/javascript/index.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    
+    <script src="/public/javascript/index.js"></script>
+
 </body>
 
 </html>

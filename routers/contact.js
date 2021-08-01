@@ -1,4 +1,4 @@
-// const http = require('http');
+const http = require('http');
 const express = require('express')
 const Contact = require('../models/contact')
 const auth = require('../middleware/auth')
@@ -10,7 +10,6 @@ const router = new express.Router()
 
 // create new contact
 router.post('/contact', auth, async (req, res,) => {
-    console.log("Himanshu")
   const contact = new Contact ({
     name: req.body.name,
     phone: parseInt(req.body.phone),
