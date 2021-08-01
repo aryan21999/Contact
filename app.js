@@ -27,17 +27,16 @@ app.get('/', function (req, res, next) {
   // console.log('Successfully User Created!')
 })
 
-
 app.use(express.static(__dirname))
-
 
 app.use(express.json())
 app.use(contactRouter)
 app.use(userRouter)
 
-
 const User = require('./models/user')
-const token = jwt.sign({ _id: '6102493723a0a015d5377d11' }, 'thisismynewproject');
+const token = jwt.sign({ _id: '61064d41cd5ca61287a7e234' }, 'thisismynewproject');
+
+console.log(token);
 
 jwt.verify(token, 'thisismynewproject', function(err, token) {
     console.log(token)
