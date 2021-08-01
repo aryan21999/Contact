@@ -13,45 +13,72 @@
   <title>Contact List</title>
 </head>
 <style>
-    .header {
-      margin: auto;
-      width: 20%;
-      border: 1px solid #5c594c;
-      padding: 9px;
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #ddd;
+  }
+
+  .th {
+    background-color: #4287f5;
+    color: white;
+    text-align: left;
+    padding: 16px;
+  }
+
+  td {
+    width: 150px;
+    text-align: left;
+    border: 1px solid black;
+    padding: 16px;
+  }
+
+  .header {
+    margin: auto;
+    width: 20%;
+    border: 2px solid #5c594c;
+    padding: 9px;
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  .h2 {
+    text-align: center;
+  
     }
-    .center {
-        text-align: center;
-}
-    .h2  {
-        text-align: center;
-        text-decoration: underline;
-    }
-    </style>
+</style>
+
 <body>
-    <div class="center">
-        <h2 style="margin:50px">Contact List</h2>
-    </div>
-    <div id="myDIV" class="header">
-        <input class="col-xs-3" type="text" id="name" placeholder="Name..." style="background-color:#DCDCDC; height:40px; width: 235px">
-        <span class="addBtn"></span>
-      </div>
-      <div id="myDIV" class="header">
-        <input class="col-xs-4" type="number" id="phone" placeholder="Phone No..." style="background-color:#DCDCDC; height:40px; width: 235px; margin-top: 5%">
-        <span class="addBtn"></span>
-      </div>
-      <div id="myDIV" class="header">
-        <input class="col-xs-5" type="email" id="email" placeholder="E-mail..." style="background-color:#DCDCDC; height:40px; width: 235px; margin-top: 5%">
-        <span class="addBtn"></span>
-      </div>
-      <div class="center">
-        <button onclick="addContact()" action="addContact" type="submit" form="nameform" value="Submit" style="background-color:#DCDCDC; height:40px; margin-top: 5%">Add Contact</button>
-    </div>
+  <div class="center">
+    <h2 style="margin:8px">Contact List</h2>
+  </div>
+  <div id="myDIV" class="header">
+    <input class="col-xs-3" type="text" id="name" placeholder="Name..."
+      style="background-color:#DCDCDC; height:40px; width: 235px">
+    <span class="addBtn"></span>
+  </div>
+  <div id="myDIV" class="header">
+    <input class="col-xs-4" type="number" id="phone" placeholder="Phone No..."
+      style="background-color:#DCDCDC; height:40px; width: 235px; margin-top: 5%">
+    <span class="addBtn"></span>
+  </div>
+  <div id="myDIV" class="header">
+    <input class="col-xs-5" type="email" id="email" placeholder="E-mail..."
+      style="background-color:#DCDCDC; height:40px; width: 235px; margin-top: 5%">
+    <span class="addBtn"></span>
+  </div>
+  <div class="center">
+    <button onclick="addContact()" action="addContact" type="submit" form="nameform" value="Submit"
+      style="background-color:#DCDCDC; height:40px; margin-top: 2.5%">Add Contact</button>
+  </div>
 
-    <table id=list></table>
+  <table id=list></table>
 
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    
-    <script src="/public/javascript/index.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  <script src="/public/javascript/index.js"></script>
 
 </body>
 

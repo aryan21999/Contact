@@ -24,7 +24,7 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
-        minlength: 7,
+        minlength: 6,
         trim: true,
         validate(value) {
             if (value.toLowerCase().includes('password')) {
@@ -35,7 +35,7 @@ const userSchema = new mongoose.Schema({
     tokens: [{
         token: {
             type: String,
-            required: true
+            required: false
         }
     }]
 })

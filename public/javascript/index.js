@@ -8,15 +8,15 @@ axios.get('/contact', {
     console.log(response.data)
   
     var list = document.getElementById('list')
-    list  = '<tr><th>Name</th><th>Phone</th><th>Email</th></tr>'
+    list  = '<tr><th>Name</th>    <th>Phone</th>    <th>Email</th></tr>'
     for (i=0; i< response.data.length;  i++)
     {
       id = response.data[i]._id
       console.log(id)
       list += '<tr>'
-      list += '<td>' + response.data[i].name + '</td>'
-      list += '<td>' + response.data[i].phone + '</td>'
-      list += '<td>' + response.data[i].email + '</td>'
+      list +=   '<td>'   +   response.data[i].name   +   '</td>'
+      list +=   '<td>'   +   response.data[i].phone   +   '</td>'
+      list +=   '<td>'   +   response.data[i].email   +   '</td>'
       list += '<td>' + '<button onclick=deleteContact("' + id + '") action="none" type="submit" value="Delete">Delete Contact</button>'
       list += '<td>' + '<button onclick=updateContact("' + id + '") action="none" type="submit" value="Update">Update Contact</button>'
       list += '</tr>'
@@ -75,15 +75,15 @@ axios.get('/contact', {
   }
   
   // update contact
-  function updateContact(id) {
-    console.log(id)
+  function updateContact(_id) {
+    console.log(_id)
     const name = document.getElementById("name").value
     const phone = document.getElementById("phone").value
     const email = document.getElementById("email").value
     console.log(name)
     console.log(phone)
     console.log(email) 
-    axios.patch("/contact/"+ id + "", {
+    axios.patch("/contact/"+ _id + "", {
       name: name,
       phone: phone,
       email: email
