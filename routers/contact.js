@@ -62,11 +62,11 @@ router.patch('/contact/:id', auth, async (req, res) => {
 
   try{
     const contact = await Contact.findById(req.params.id)
-    if( _id == req.params.id ){
+    if(contact.owner == req.user.email){
     updates.forEach((update) => contact[update] = req.body[update])
     await contact.save()
     }
-    else if( _id != req.params.id ){
+    else if(contact.owner != req.user.email ){
       return res.status(400).send(e)
     }
     if (!contact) {

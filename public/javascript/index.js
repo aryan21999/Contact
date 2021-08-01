@@ -57,7 +57,6 @@ axios.get('/contact', {
   
   // delete contact
   function deleteContact(id) {
-    console.log("Tet")
     console.log(id)
     axios.delete("/contact/"+ id + "/delete", {
       headers: {
@@ -75,15 +74,15 @@ axios.get('/contact', {
   }
   
   // update contact
-  function updateContact(_id) {
-    console.log(_id)
+  function updateContact(id) {
+    console.log(id)
     const name = document.getElementById("name").value
     const phone = document.getElementById("phone").value
     const email = document.getElementById("email").value
     console.log(name)
     console.log(phone)
     console.log(email) 
-    axios.patch("/contact/"+ _id + "", {
+    axios.patch("/contact/"+ id + "", {
       name: name,
       phone: phone,
       email: email
