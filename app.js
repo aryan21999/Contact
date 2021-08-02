@@ -35,7 +35,7 @@ app.use(userRouter)
 
 const User = require('./models/user')
 const token = jwt.sign({ _id: '61064d41cd5ca61287a7e234' }, 'thisismynewproject', {
-    expiresIn: '3 seconds'
+    expiresIn: '1 seconds'
 });
 
 // console.log(token);
