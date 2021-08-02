@@ -86,3 +86,11 @@ test('Read all contact', async () => {
     .expect(200)
     expect(response.body[0].name).toEqual(contactOne.name)
 })
+
+test('Should logout existing user', async () => {
+    await request(app)
+    .post('/users/logout')
+    .set('Authorization', `Bearer ${token}`)
+    .send()
+    .expect(200)
+})
