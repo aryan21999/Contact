@@ -5,8 +5,8 @@ const Contact = require('../models/contact')
 const db = require('../db/mongoose')
 
 const userOne = {
-    name: "Aryan",
-    email: "test@test.com",
+    name: "Aryan12",
+    email: "test12@test.com",
     password: "12121212"
 }
 beforeAll(async () => {
